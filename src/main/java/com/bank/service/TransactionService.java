@@ -32,6 +32,7 @@ public class TransactionService {
         BankEntity bank = transaction.getBank();
         UserEntity user = transaction.getUser();
 
+        bank.setCntOfMoney(bank.getCntOfMoney() + transaction.getCntOfMoney());
         bank.getHistory().remove(transaction);
         user.getHistory().remove(transaction);
         transactionRepository.delete(transaction);
